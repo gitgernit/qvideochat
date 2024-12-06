@@ -1,0 +1,3 @@
+[submodule "videochat-contracts"]
+	path = videochat-contracts
+	url = https://github.com/gitgernit/videochat-contracts.git

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'videochat.ui'
+# Form implementation generated from reading ui file 'src/designs/videochat.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -67,6 +67,8 @@ class Ui_QVideoChat(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.message_history_edit = QtWidgets.QPlainTextEdit(parent=self.room)
         self.message_history_edit.setEnabled(True)
+        self.message_history_edit.setFocusPolicy(QtCore.Qt.FocusPolicy.NoFocus)
+        self.message_history_edit.setReadOnly(True)
         self.message_history_edit.setObjectName("message_history_edit")
         self.verticalLayout_2.addWidget(self.message_history_edit)
         self.message_input = QtWidgets.QLineEdit(parent=self.room)
@@ -77,7 +79,7 @@ class Ui_QVideoChat(object):
         self.horizontalLayout.addWidget(self.stackedWidget)
 
         self.retranslateUi(QVideoChat)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(QVideoChat)
 
     def retranslateUi(self, QVideoChat):

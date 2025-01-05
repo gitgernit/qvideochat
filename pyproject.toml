@@ -5,8 +5,12 @@ description = "Qt-based application implementing a chatroom with video (camera) 
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+
     "protobuf>=5.29.1",
+
     "pyqt6>=6.7.1",
+
+    "qasync>=0.27.1",
 ]
 
 [build-system]

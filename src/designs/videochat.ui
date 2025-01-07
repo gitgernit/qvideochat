@@ -28,7 +28,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -46,7 +46,7 @@
           </spacer>
          </item>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QLabel" name="room_id_label">
+          <widget class="QLabel" name="room_name_label">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -57,7 +57,17 @@
             <string notr="true">font-size: 15px;</string>
            </property>
            <property name="text">
-            <string>Room ID:</string>
+            <string>Room Name:</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLineEdit" name="room_creation_name_input">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -107,7 +117,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
-          <widget class="QLineEdit" name="room_id_input">
+          <widget class="QLineEdit" name="room_name_input">
            <property name="minimumSize">
             <size>
              <width>200</width>
@@ -118,7 +128,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="placeholderText">
-            <string>Room ID</string>
+            <string>Room Name</string>
            </property>
           </widget>
          </item>

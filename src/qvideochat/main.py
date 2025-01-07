@@ -12,12 +12,14 @@ from qvideochat.ui.videochat import Videochat
 def main() -> None:
     if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
         QtWidgets.QApplication.setAttribute(
-            QtCore.Qt.AA_EnableHighDpiScaling, on=True,
+            QtCore.Qt.AA_EnableHighDpiScaling,
+            on=True,
         )
 
     if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
         QtWidgets.QApplication.setAttribute(
-            QtCore.Qt.AA_UseHighDpiPixmaps, on=True,
+            QtCore.Qt.AA_UseHighDpiPixmaps,
+            on=True,
         )
 
     app = QApplication(sys.argv)
@@ -37,6 +39,8 @@ def main() -> None:
 
 if __name__ == '__main__':
     sys.excepthook = lambda exctype, value, traceback: sys.__excepthook__(
-        exctype, value, traceback,
+        exctype,
+        value,
+        traceback,
     )
     main()

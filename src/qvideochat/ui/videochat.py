@@ -61,7 +61,6 @@ class Videochat(PyQt6.QtWidgets.QWidget, Ui_QVideoChat):
         await self.room_interactor.send_message(message_text)
         self.message_input.setText('')
 
-
     async def log_messages(self) -> None:
         async for message in self.room_interactor.read_messages():
             escaped_username = html.escape(message.username)

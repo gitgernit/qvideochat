@@ -1,4 +1,4 @@
-extend-exclude = [".github", "proto"]
+extend-exclude = [".github", "proto", "gen"]
 force-exclude = true
 line-length = 79
 show-fixes = true

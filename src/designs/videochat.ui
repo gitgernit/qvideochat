@@ -166,26 +166,32 @@
       </layout>
      </widget>
      <widget class="QWidget" name="room">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QPlainTextEdit" name="message_history_edit">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <layout class="QGridLayout" name="gridLayout" columnstretch="3,1">
+         <item row="1" column="0">
+          <widget class="QPlainTextEdit" name="message_history"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QListWidget" name="room_users_list"/>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLineEdit" name="message_input"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="leave_room_button">
+           <property name="text">
+            <string>Leave</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QLineEdit" name="message_input">
-           <property name="placeholderText">
-            <string>Enter your message</string>
+         <item row="0" column="0">
+          <widget class="QLabel" name="inner_room_name_label">
+           <property name="styleSheet">
+            <string notr="true">font-size: 15px;</string>
+           </property>
+           <property name="text">
+            <string>Room Name:</string>
            </property>
           </widget>
          </item>

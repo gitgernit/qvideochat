@@ -9,10 +9,19 @@ import proto.rooms_pb2_grpc
 import qvideochat.core.config
 
 
+class Message:
+    pass
+
+
 @dataclasses.dataclass(frozen=True)
-class TextMessage:
+class TextMessage(Message):
     username: str
     text: str
+
+
+@dataclasses.dataclass(frozen=True)
+class UsersMessage(Message):
+    users: list[str]
 
 
 class RoomInteractor:
@@ -27,7 +36,7 @@ class RoomInteractor:
         self.room_name = room_name
         self.host = host
         self.port = port
-        self.stream: typing.AsyncIterator | None = None
+        self.stream: (asyncio.Future | typing.AsyncIterator) | None = None
 
         self._message_queue: asyncio.Queue[str] = asyncio.Queue()
 
@@ -52,17 +61,38 @@ class RoomInteractor:
                 yield room_method
 
         self.stream = stub.JoinRoom(send_messages(), metadata=md)
+        await asyncio.sleep(0.15)  # this sucks but grpc api spares no one
+
+        if (
+            self.stream.done()
+            and await self.stream.code() != grpc.StatusCode.OK
+        ):
+            error_message = await self.stream.details()
+            raise grpc.RpcError(
+                grpc.StatusCode.INVALID_ARGUMENT, error_message,
+            )
+
+    async def disconnect(self) -> None:
+        if self.stream is not None:
+            self.stream.cancel()
+            self.stream = None
 
     async def send_message(self, text: str) -> None:
         await self._message_queue.put(text)
 
-    async def read_messages(self) -> typing.AsyncGenerator[TextMessage, None]:
+    async def read_messages(self) -> typing.AsyncGenerator[Message, None]:
         async for room_method in self.stream:
             if room_method.HasField('message_received'):
                 notification = room_method.message_received
                 yield TextMessage(
                     username=notification.username,
                     text=notification.text,
+                )
+
+            elif room_method.HasField('room_users'):
+                notification = room_method.room_users
+                yield UsersMessage(
+                    users=[user.username for user in notification.users],
                 )
 
 
